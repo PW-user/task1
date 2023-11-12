@@ -15,6 +15,8 @@ class Loan(db.Model):
     original_book_type = db.Column(db.String(64), nullable=False)
 
     def __init__(self, customer_name, book_name, loan_date, return_date, original_author, original_year_published, original_book_type):
+        if len(name) > 20:
+            raise ValueError("The provided value is too long")
         self.customer_name = customer_name
         self.book_name = book_name
         self.loan_date = loan_date
