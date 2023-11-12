@@ -10,6 +10,8 @@ class Customer(db.Model):
     age = db.Column(db.Integer)
 
     def __init__(self, name, city, age):
+        if len(name) > 20:
+            raise ValueError("The provided value is too long")
         self.name = name
         self.city = city
         self.age = age
