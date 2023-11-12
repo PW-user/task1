@@ -13,6 +13,8 @@ class Book(db.Model):
     status = db.Column(db.String(20), default='available')
 
     def __init__(self, name, author, year_published, book_type, status='available'):
+        if len(name) > 20:
+            raise ValueError("The provided value is too long")
         self.name = name
         self.author = author
         self.year_published = year_published
